@@ -1,9 +1,13 @@
-<div align="center"> <img src="https://i.loli.net/2019/03/17/5c8e509a31330.png" width="400px"/> </div><br>
+<div align="center">
 
-# PH Logo Creator
+![](Xvideos.png)
+
+ </div><br>
+
+# Xvideos Logo Generator
 
 > *Do One Thing and Do It Well*
 
-Try it online: https://zjuguoshuai.github.io/PH-Logo-Creator/
+[Try it online](https://urloser404.github.io/Xvideos-LOGO-generator/) 
 
-*Originating from Rein Fernhout, fixed by me.*
+> fork from [PH-LOGO-generator](https://github.com/ZJUGuoShuai/PH-Logo-Creator)
