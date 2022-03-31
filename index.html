@@ -9,8 +9,8 @@
 <body>
   <div id="container">
     <div id="logo-container">
-      <div contenteditable="true" id="porn" class="logo">Type</div>
-      <div contenteditable="true" id="hub" class="logo">Here</div>
+      <div contenteditable="true" id="x" class="logo">Type</div>
+      <div contenteditable="true" id="videos" class="logo">Here</div>
     </div>
     <button id="save" onclick="draw()">download</button>
     <canvas width="500" height="115"></canvas>
@@ -43,16 +43,16 @@
       border: none;
     }
 
-    #porn {
+    #x {
       /* color: white; */
       color: red;
     }
 
-    #hub {
+    #videos {
       /* background-color: orange; */
       color: white;
-      padding: 0px 10px;
-      border-radius: 10px;
+      /* padding: 0px 10px; */
+      /* border-radius: 10px; */
     }
 
     .logo {
@@ -70,43 +70,49 @@
   </style>
 
   <script>
-    // When the "Porn" div is empty give it a border
-    document.getElementById("porn").addEventListener("input", () => {
-      let porn = document.getElementById("porn");
-      if (porn.innerHTML == "")
-        porn.setAttribute("style", "border: 3px dashed red;");
-      else porn.setAttribute("style", "");
+    // When the "x" div is empty give it a border
+    document.getElementById("x").addEventListener("input", () => {
+      let x = document.getElementById("x");
+      if (x.innerHTML == "")
+        x.setAttribute("style", "border: 3px dashed red;");
+      else x.setAttribute("style", "");
+    });
+    document.getElementById("videos").addEventListener("input", () => {
+      let videos = document.getElementById("videos");
+      if (videos.innerHTML == "")
+        videos.setAttribute("style", "border: 3px dashed white;");
+      else videos.setAttribute("style", "");
     });
 
     var mp = (multiplier = 10); // Number to mulitply all variables used in creating the image with for a higher res
     var iM = (imageMargin = 30);
 
     function draw(
-      porn = document.getElementById("porn").innerHTML,
-      hub = document.getElementById("hub").innerHTML
+      x = document.getElementById("x").innerHTML,
+      videos = document.getElementById("videos").innerHTML
     ) {
       const canvas = document.getElementsByTagName("canvas")[0];
-      const pornDiv = document.getElementById("porn");
-      const hubDiv = document.getElementById("hub");
+      const xDiv = document.getElementById("x");
+      const videosDiv = document.getElementById("videos");
 
       canvas.width =
-        (iM * 2 + pornDiv.offsetWidth + hubDiv.offsetWidth) * mp;
-      canvas.height = (iM * 2 + pornDiv.offsetHeight) * mp;
+        (iM * 2 + xDiv.offsetWidth + videosDiv.offsetWidth) * mp;
+      canvas.height = (iM * 2 + xDiv.offsetHeight) * mp;
 
       const { width, height } = canvas;
       const ctx = canvas.getContext("2d");
       ctx.font = `bold ${100 * mp}px Arial`;
-      const pornWidth = ctx.measureText(porn).width;
-      const hubWidth = ctx.measureText(hub).width;
+      const xWidth = ctx.measureText(x).width;
+      const videosWidth = ctx.measureText(videos).width;
 
       //Black background
       ctx.fillStyle = "black";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      //Draw "porn"
+      //Draw "x"
       // ctx.fillStyle = "white";
       ctx.fillStyle = "red"
-      ctx.fillText(porn, iM * mp, iM * mp + 92 * mp); //92 is the magic number
+      ctx.fillText(x, iM * mp, iM * mp + 92 * mp); //92 is the magic number
 
       //draw orange
       // let borderRadius = 20;
@@ -115,25 +121,25 @@
       // ctx.lineJoin = "round";
       // ctx.lineWidth = borderRadius * mp;
       // ctx.strokeRect(
-      //   iM * mp + pornWidth + (borderRadius / 2) * mp + 5 * mp,
+      //   iM * mp + xWidth + (borderRadius / 2) * mp + 5 * mp,
       //   iM * mp + (borderRadius / 2) * mp,
-      //   hubWidth,
+      //   videosWidth,
       //   -iM * 2 * mp + height - borderRadius * mp
       // );
       // ctx.fillRect(
-      //   iM * mp + pornWidth + borderRadius * mp + 5 * mp - 1 * mp,
+      //   iM * mp + xWidth + borderRadius * mp + 5 * mp - 1 * mp,
       //   iM * mp + borderRadius * mp,
-      //   hubWidth + 2 * mp - borderRadius * mp,
+      //   videosWidth + 2 * mp - borderRadius * mp,
       //   -iM * 2 * mp + height - borderRadius * 2 * mp
       // );
       //The -1 (x) and +2 (width) are to make the inner-square a bit bigger to avoid creating a visible edge between the stroke outline and the inner-square
 
-      //draw "hub"
+      //draw "videos"
       // ctx.fillStyle = "black";
       ctx.fillStyle = "white"
       ctx.fillText(
-        hub,
-        iM * mp + pornWidth + 10 * mp,
+        videos,
+        iM * mp + xWidth + 10 * mp,
         iM * mp + 92 * mp
       ); //92 is the magic number
 
@@ -141,12 +147,12 @@
     }
 
     function save() {
-      porn = document.getElementById("porn").innerHTML;
-      hub = document.getElementById("hub").innerHTML;
+      x = document.getElementById("x").innerHTML;
+      videos = document.getElementById("videos").innerHTML;
 
       let link = document.createElement("a");
       let canvas = document.getElementsByTagName("canvas")[0];
-      link.setAttribute("download", porn + hub + ".png");
+      link.setAttribute("download", x + videos + ".png");
       link.setAttribute("href", canvas.toDataURL("image/png;base64"));
       if (document.createEvent) {
         e = document.createEvent("MouseEvents");
