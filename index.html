@@ -7,40 +7,50 @@
 </head>
 
 <body>
-  <div id="logo-container">
-    <div contenteditable="true" id="porn" class="logo">Type</div>
-    <div contenteditable="true" id="hub" class="logo">Here</div>
+  <div id="container">
+    <div id="logo-container">
+      <div contenteditable="true" id="porn" class="logo">Type</div>
+      <div contenteditable="true" id="hub" class="logo">Here</div>
+    </div>
+    <button id="save" onclick="draw()">download</button>
+    <canvas width="500" height="115"></canvas>
   </div>
-  <button id="save" onclick="draw()">download</button>
-  <canvas width="500" height="115"></canvas>
+  
 
   <style>
     body {
-      text-align: center;
+      height: 95vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       background-color: rgb(0, 0, 0);
     }
 
-    #logo-container {
-      margin-top: 15%;
+    #container{
+      text-align: center;
     }
 
     #save {
       margin-top: 20px;
-      background-color: orange;
-      color: black;
+      /* background-color: orange; */
+      background-color: red;
+      /* color: black; */
+      color: white;
       font-family: Arial;
       font-weight: bold;
       font-size: 50px;
-      border-radius: 10px;
+      /* border-radius: 10px; */
       border: none;
     }
 
     #porn {
-      color: white;
+      /* color: white; */
+      color: red;
     }
 
     #hub {
-      background-color: orange;
+      /* background-color: orange; */
+      color: white;
       padding: 0px 10px;
       border-radius: 10px;
     }
@@ -94,31 +104,33 @@
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       //Draw "porn"
-      ctx.fillStyle = "white";
+      // ctx.fillStyle = "white";
+      ctx.fillStyle = "red"
       ctx.fillText(porn, iM * mp, iM * mp + 92 * mp); //92 is the magic number
 
       //draw orange
-      let borderRadius = 20;
-      ctx.strokeStyle = "orange";
-      ctx.fillStyle = "orange";
-      ctx.lineJoin = "round";
-      ctx.lineWidth = borderRadius * mp;
-      ctx.strokeRect(
-        iM * mp + pornWidth + (borderRadius / 2) * mp + 5 * mp,
-        iM * mp + (borderRadius / 2) * mp,
-        hubWidth,
-        -iM * 2 * mp + height - borderRadius * mp
-      );
-      ctx.fillRect(
-        iM * mp + pornWidth + borderRadius * mp + 5 * mp - 1 * mp,
-        iM * mp + borderRadius * mp,
-        hubWidth + 2 * mp - borderRadius * mp,
-        -iM * 2 * mp + height - borderRadius * 2 * mp
-      );
+      // let borderRadius = 20;
+      // ctx.strokeStyle = "orange";
+      // ctx.fillStyle = "orange";
+      // ctx.lineJoin = "round";
+      // ctx.lineWidth = borderRadius * mp;
+      // ctx.strokeRect(
+      //   iM * mp + pornWidth + (borderRadius / 2) * mp + 5 * mp,
+      //   iM * mp + (borderRadius / 2) * mp,
+      //   hubWidth,
+      //   -iM * 2 * mp + height - borderRadius * mp
+      // );
+      // ctx.fillRect(
+      //   iM * mp + pornWidth + borderRadius * mp + 5 * mp - 1 * mp,
+      //   iM * mp + borderRadius * mp,
+      //   hubWidth + 2 * mp - borderRadius * mp,
+      //   -iM * 2 * mp + height - borderRadius * 2 * mp
+      // );
       //The -1 (x) and +2 (width) are to make the inner-square a bit bigger to avoid creating a visible edge between the stroke outline and the inner-square
 
       //draw "hub"
-      ctx.fillStyle = "black";
+      // ctx.fillStyle = "black";
+      ctx.fillStyle = "white"
       ctx.fillText(
         hub,
         iM * mp + pornWidth + 10 * mp,
